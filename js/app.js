@@ -10,6 +10,7 @@ form.addEventListener('submit', async (event) => {
   console.log(city)
   getCityName(city)
   getCityTemperature(city)
+  isDayOrNight(city)
 })
 
 
@@ -22,8 +23,17 @@ const getCityTemperature = ({ main, weather }) => {
   const tempParagraph = document.querySelector('.my-4 > span')
   const description = document.querySelector('.text-muted > div.my-3')
   const temperature = Math.floor(main.temp)
-  const weatherDescription = `${weather[0].description}`
 
-  description.textContent = weatherDescription
+  description.textContent = `${weather[0].description}`
   tempParagraph.textContent = temperature
+}
+
+const isDayOrNight = ({ weather }) => {
+  const dayTime = weather[0].icon
+  const cardImage = document.querySelector('.card-img-top')
+
+
+  return dayTime.includes('d') ?
+    cardImage.setAttribute('src', './src/day.svg') :
+    cardImage.setAttribute('src', './src/night.svg')
 }
