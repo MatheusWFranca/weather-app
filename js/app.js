@@ -1,16 +1,19 @@
 import getCityWeather from "./weather.js"
 
-const form = document.querySelector('form')
+const form = document.querySelector('[data-js="change-location"]')
+const card = document.querySelector('.card')
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
 
   const inputValue = event.target.city.value
   const city = await getCityWeather(inputValue)
-  console.log(city)
+
   getCityName(city)
   getCityTemperature(city)
   isDayOrNight(city)
+  card.style.display = 'block'
+  form.reset()
 })
 
 
