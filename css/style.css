@@ -25,3 +25,10 @@ div.my-3 {
   width: 50px;
   height: 45px;
 }
+
+
+@media (max-width: 340px){
+  h5.my-3 {
+    font-size: 18px;
+  }
+}
